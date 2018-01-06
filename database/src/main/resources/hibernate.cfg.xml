@@ -14,7 +14,7 @@
         </property>
 
         <property name = "hibernate.connection.url">
-            jdbc:mysql://localhost/online-shop
+            jdbc:mysql://localhost:3306/online_shop
         </property>
 
         <property name = "hibernate.connection.username">
@@ -24,6 +24,6 @@
         <property name = "hibernate.connection.password">
             root
         </property>
-
+        <mapping class="com.epam.entity.User"/>
     </session-factory>
 </hibernate-configuration>

@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS product_feedback(
   mark int,
   advantages varchar(1024),
   disadvantages varchar(1024),
-  feadback varchar(2048),
+  feedback varchar(2048),
   FOREIGN KEY (product_fk) REFERENCES product(id),
   FOREIGN KEY (user_fk) REFERENCES USER(id)
 );

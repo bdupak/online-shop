@@ -5,7 +5,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.AnnotationConfiguration;
+import org.hibernate.cfg.Configuration;
 
 import java.util.Iterator;
 import java.util.List;
@@ -15,11 +15,12 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            factory = new AnnotationConfiguration().
-                    configure().
-                    addPackage("com.epam.entity"). //add package if used.
-                            addAnnotatedClass(User.class).
-                            buildSessionFactory();
+            factory = new Configuration().configure().buildSessionFactory();
+//                    new AnnotationConfiguration().
+//                    configure().
+//                    addPackage("com.epam.entity"). //add package if used.
+//                            addAnnotatedClass(User.class).
+//                            buildSessionFactory();
         } catch (Throwable ex) {
             System.err.println("Failed to create sessionFactory object." + ex);
             throw new ExceptionInInitializerError(ex);
@@ -27,13 +28,13 @@ public class Main {
         new Main().listUsers();
     }
 
-    public void listUsers( ) {
+    public void listUsers() {
         Session session = factory.openSession();
         Transaction tx = null;
 
         try {
             tx = session.beginTransaction();
-            List employees = session.createQuery("FROM user").list();
+            List employees = session.createQuery("FROM User").list();
             for (Iterator iterator = employees.iterator(); iterator.hasNext(); ) {
                 User user = (User) iterator.next();
                 System.out.println(user);

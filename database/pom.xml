@@ -16,9 +16,17 @@
     <properties>
         <mysql.version>5.1.34</mysql.version>
         <hibernate.version>5.2.12.Final</hibernate.version>
-        <hibernate.annotation.version>3.5.6-Final</hibernate.annotation.version>
+        <hibernate.annotation.version>3.4.0.GA</hibernate.annotation.version>
+        <hibernate.common.annotation>5.0.1.Final</hibernate.common.annotation>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <repositories>
+        <repository>
+            <id>JBoss repository</id>
+            <url>http://repository.jboss.com/maven2/</url>
+        </repository>
+    </repositories>
 
     <dependencies>
         <dependency>
@@ -35,6 +43,11 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-annotations</artifactId>
             <version>${hibernate.annotation.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
         </dependency>
     </dependencies>
 </project>
