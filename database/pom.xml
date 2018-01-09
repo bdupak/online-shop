@@ -18,6 +18,8 @@
         <hibernate.version>5.2.12.Final</hibernate.version>
         <hibernate.annotation.version>3.4.0.GA</hibernate.annotation.version>
         <hibernate.common.annotation>5.0.1.Final</hibernate.common.annotation>
+        <log4j.version>1.2.17</log4j.version>
+        <lombok.version>1.16.18</lombok.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -47,7 +49,12 @@
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
+            <version>${log4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
         </dependency>
     </dependencies>
 </project>
