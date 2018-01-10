@@ -25,5 +25,10 @@
             root
         </property>
         <mapping class="com.epam.entity.User"/>
+        <mapping class="com.epam.entity.Address"/>
+        <mapping class="com.epam.entity.Role"/>
+        <mapping class="com.epam.entity.Product"/>
+        <mapping class="com.epam.entity.ProductFeedback"/>
+        <mapping class="com.epam.entity.Orders"/>
     </session-factory>
 </hibernate-configuration>

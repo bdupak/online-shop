@@ -2,14 +2,14 @@ package com.epam.entity;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "product")
 @Data
 public class Product {
+    @Id
+    @GeneratedValue
     private Integer id;
     private String name;
     private String overview;
