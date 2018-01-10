@@ -29,8 +29,9 @@ public class User {
     private String phoneNumber;
     @Column(name = "discount")
     private Integer discount;
-    @Column(name = "address_fk")
-    private Integer addressFk;
+    @OneToOne(cascade = CascadeType.ALL )
+    @JoinColumn(name = "address_fk")
+    private Address address;
     @Column(name = "role_fk")
     private Integer roleFk;
     @Column(name = "img_url")
