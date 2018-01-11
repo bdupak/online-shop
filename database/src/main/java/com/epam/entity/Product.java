@@ -20,6 +20,7 @@ public class Product {
     private String imageUrl;
     @Column(name = "is_deleted")
     private Boolean isDeleted;
-    @Column(name = "category_fk")
-    private Integer category;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "category_fk")
+    private Category category;
 }

@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Set;
 
 @Entity
 @Table(name = "product_feedback")
@@ -13,11 +14,14 @@ public class ProductFeedback {
     @Id
     @GeneratedValue
     private Integer id;
-    @Column(name = "product_fk")
-    private Integer productFk;
-    @Column(name = "user_fk")
-    private Integer userFk;
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id")
+    private Set<Product> product;
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id")
+    private Set<User> user;
     private Timestamp date;
+    private Integer mark;
     private String advantages;
     private String disadvantages;
     private String feedback;

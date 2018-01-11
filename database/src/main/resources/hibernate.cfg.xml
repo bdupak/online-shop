@@ -29,6 +29,7 @@
         <mapping class="com.epam.entity.Role"/>
         <mapping class="com.epam.entity.Product"/>
         <mapping class="com.epam.entity.ProductFeedback"/>
-        <mapping class="com.epam.entity.Orders"/>
+        <mapping class="com.epam.entity.Order"/>
+        <mapping class="com.epam.entity.Category"/>
     </session-factory>
 </hibernate-configuration>

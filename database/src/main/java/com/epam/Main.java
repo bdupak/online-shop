@@ -1,5 +1,8 @@
 package com.epam;
 
+import com.epam.entity.Order;
+import com.epam.entity.Product;
+import com.epam.entity.ProductFeedback;
 import com.epam.entity.User;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -16,11 +19,6 @@ public class Main {
     public static void main(String[] args) {
         try {
             factory = new Configuration().configure().buildSessionFactory();
-//                    new AnnotationConfiguration().
-//                    configure().
-//                    addPackage("com.epam.entity"). //add package if used.
-//                            addAnnotatedClass(User.class).
-//                            buildSessionFactory();
         } catch (Throwable ex) {
             System.err.println("Failed to create sessionFactory object." + ex);
             throw new ExceptionInInitializerError(ex);
@@ -34,9 +32,10 @@ public class Main {
 
         try {
             tx = session.beginTransaction();
-            List employees = session.createQuery("FROM User").list();
-            for (Iterator iterator = employees.iterator(); iterator.hasNext(); ) {
-                User user = (User) iterator.next();
+            List users = session.createQuery("FROM Order").list();
+            System.out.println(users);
+            for (Iterator iterator = users.iterator(); iterator.hasNext(); ) {
+                Order user = (Order) iterator.next();
                 System.out.println(user);
             }
             tx.commit();

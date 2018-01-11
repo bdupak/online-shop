@@ -11,32 +11,24 @@ import java.sql.Timestamp;
 public class User {
     @Id
     @GeneratedValue
-    @Column(name = "id")
     private Integer id;
-    @Column(name = "login")
     private String login;
-    @Column(name = "password")
     private String password;
-    @Column(name = "salt")
     private String salt;
-    @Column(name = "name")
     private String name;
-    @Column(name = "surname")
     private String surname;
-    @Column(name = "age")
     private Integer age;
     @Column(name = "phone_number")
     private String phoneNumber;
-    @Column(name = "discount")
     private Integer discount;
-    @OneToOne(cascade = CascadeType.ALL )
+    @ManyToOne(cascade = CascadeType.ALL )
     @JoinColumn(name = "address_fk")
     private Address address;
-    @Column(name = "role_fk")
-    private Integer roleFk;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "role_fk")
+    private Role role;
     @Column(name = "img_url")
     private String imageUrl;
-    @Column(name = "uuid")
     private String uuid;
     @Column(name = "reg_date")
     private Timestamp registeredDate;
