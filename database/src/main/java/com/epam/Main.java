@@ -1,9 +1,7 @@
 package com.epam;
 
+import com.epam.dao.UserDao;
 import com.epam.entity.Order;
-import com.epam.entity.Product;
-import com.epam.entity.ProductFeedback;
-import com.epam.entity.User;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -23,7 +21,8 @@ public class Main {
             System.err.println("Failed to create sessionFactory object." + ex);
             throw new ExceptionInInitializerError(ex);
         }
-        new Main().listUsers();
+//        new Main().listUsers();
+        System.out.println(new UserDao(factory).getUserById(1));
     }
 
     public void listUsers() {

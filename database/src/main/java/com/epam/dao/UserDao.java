@@ -16,7 +16,7 @@ public class UserDao extends AbstractDao {
         super(sessionFactory);
     }
 
-    public User getUserById(Long id) {
+    public User getUserById(Integer id) {
         try(Session session = sessionFactory.openSession()) {
             return session.get(User.class, id);
         } catch(HibernateException e) {
