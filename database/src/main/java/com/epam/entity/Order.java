@@ -13,10 +13,10 @@ public class Order {
     @Id
     @GeneratedValue
     private Integer id;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "id")
     private Set<User> user;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "id")
     private Set<Product> product;
     private Timestamp date;

@@ -10,9 +10,6 @@ public abstract class AbstractDao<T> implements GenericDao<T> {
     private Class<T> clazz;
     protected SessionFactory sessionFactory;
 
-    public AbstractDao() {
-    }
-
     public AbstractDao(SessionFactory sessionFactory, Class<T> clazz) {
         this.sessionFactory = sessionFactory;
         this.clazz = clazz;
@@ -58,7 +55,7 @@ public abstract class AbstractDao<T> implements GenericDao<T> {
     @Override
     public List getAll() {
         try (Session session = sessionFactory.openSession()) {
-            return session.createQuery("FROM" + clazz.getSimpleName()).list();
+            return session.createQuery("FROM " + clazz.getSimpleName()).list();
         } catch (HibernateException e) {
             e.printStackTrace();
         }

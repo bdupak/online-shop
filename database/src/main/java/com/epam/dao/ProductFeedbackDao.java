@@ -5,9 +5,6 @@ import org.hibernate.SessionFactory;
 
 public class ProductFeedbackDao extends AbstractDao<ProductFeedback> {
 
-    public ProductFeedbackDao() {
-    }
-
     public ProductFeedbackDao(SessionFactory sessionFactory, Class<ProductFeedback> clazz) {
         super(sessionFactory, clazz);
     }

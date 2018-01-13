@@ -14,10 +14,10 @@ public class ProductFeedback {
     @Id
     @GeneratedValue
     private Integer id;
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "id")
     private Set<Product> product;
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "id")
     private Set<User> user;
     private Timestamp date;
