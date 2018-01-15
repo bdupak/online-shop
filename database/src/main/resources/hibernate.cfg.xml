@@ -24,6 +24,10 @@
         <property name = "hibernate.connection.password">
             root
         </property>
+
+        <!--<property name="hibernate.id.new_generator_mappings">-->
+            <!--false-->
+        <!--</property>-->
         <mapping class="com.epam.entity.User"/>
         <mapping class="com.epam.entity.Address"/>
         <mapping class="com.epam.entity.Role"/>

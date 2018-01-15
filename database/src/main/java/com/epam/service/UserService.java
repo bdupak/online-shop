@@ -2,15 +2,15 @@ package com.epam.service;
 
 import com.epam.dao.UserDao;
 import com.epam.entity.User;
-import com.epam.utils.HibernateUtils;
 
 import java.util.List;
 
 public class UserService {
+
     private UserDao userDao;
 
     public UserService() {
-        userDao = new UserDao(HibernateUtils.getSessionFactory(), User.class);
+        userDao = new UserDao(User.class);
     }
 
     public User getUserById(Integer id) {

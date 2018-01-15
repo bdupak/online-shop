@@ -5,7 +5,7 @@ import org.hibernate.SessionFactory;
 
 public class ProductDao extends AbstractDao<Product> {
 
-    public ProductDao(SessionFactory sessionFactory, Class<Product> clazz) {
-        super(sessionFactory, clazz);
+    public ProductDao(Class<Product> clazz) {
+        super(clazz);
     }
 }

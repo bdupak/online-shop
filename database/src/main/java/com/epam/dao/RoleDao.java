@@ -5,7 +5,7 @@ import org.hibernate.SessionFactory;
 
 public class RoleDao extends AbstractDao<Role> {
 
-    public RoleDao(SessionFactory sessionFactory, Class<Role> clazz) {
-        super(sessionFactory, clazz);
+    public RoleDao(Class<Role> clazz) {
+        super(clazz);
     }
 }

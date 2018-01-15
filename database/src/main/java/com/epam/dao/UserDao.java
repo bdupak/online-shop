@@ -5,7 +5,7 @@ import org.hibernate.SessionFactory;
 
 public class UserDao extends AbstractDao<User> {
 
-    public UserDao(SessionFactory sessionFactory, Class<User> clazz) {
-        super(sessionFactory, clazz);
+    public UserDao(Class<User> clazz) {
+        super(clazz);
     }
 }

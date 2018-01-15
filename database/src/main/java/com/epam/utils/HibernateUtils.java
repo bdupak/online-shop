@@ -6,8 +6,11 @@ import org.hibernate.cfg.Configuration;
 
 public class HibernateUtils {
 
-    private static final SessionFactory sessionFactory = buildSessionFactory();
+    private static SessionFactory sessionFactory;
     private static final Logger LOG = Logger.getLogger(HibernateUtils.class);
+
+    private HibernateUtils() {
+    }
 
     private static SessionFactory buildSessionFactory() {
         try {
@@ -18,7 +21,10 @@ public class HibernateUtils {
         }
     }
 
-    public static SessionFactory getSessionFactory() {
+    public static synchronized SessionFactory getSessionFactory() {
+        if (sessionFactory == null) {
+            sessionFactory = buildSessionFactory();
+        }
         return sessionFactory;
     }
 }

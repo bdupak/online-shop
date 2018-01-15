@@ -5,7 +5,7 @@ import org.hibernate.SessionFactory;
 
 public class AddressDao extends AbstractDao<Address> {
 
-    public AddressDao(SessionFactory sessionFactory, Class<Address> clazz) {
-        super(sessionFactory, clazz);
+    public AddressDao(Class<Address> clazz) {
+        super(clazz);
     }
 }
