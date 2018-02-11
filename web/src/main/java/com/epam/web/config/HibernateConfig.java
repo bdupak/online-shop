@@ -1,8 +1,6 @@
 package com.epam.web.config;
 
-import com.epam.database.entity.Address;
-import com.epam.database.entity.Role;
-import com.epam.database.entity.User;
+import com.epam.database.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -25,7 +23,8 @@ public class HibernateConfig {
     public LocalSessionFactoryBean getSessionFactory() {
         LocalSessionFactoryBean factoryBean = new LocalSessionFactoryBean();
         factoryBean.setConfigLocation(context.getResource("classpath:hibernate.cfg.xml"));
-        factoryBean.setAnnotatedClasses(User.class, Role.class, Address.class);
+        factoryBean.setAnnotatedClasses(User.class, Role.class, Address.class, Category.class,
+                Order.class, Product.class, ProductFeedback.class);
         return factoryBean;
     }
 
