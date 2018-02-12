@@ -16,12 +16,12 @@ public class ProductFeedbackService {
     private ProductFeedbackDao productFeedbackDao;
 
     @Transactional
-    public ProductFeedback getProductFeedbackById(Long id) {
+    public ProductFeedback getById(Long id) {
         return productFeedbackDao.getById(id);
     }
 
     @Transactional
-    public void saveProductFeedback(ProductFeedback ProductFeedback) {
+    public void save(ProductFeedback ProductFeedback) {
         productFeedbackDao.save(ProductFeedback);
     }
 

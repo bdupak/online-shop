@@ -20,7 +20,7 @@ public class ProductService {
     }
 
     @Transactional
-    public void saveProduct(Product Product) {
+    public void save(Product Product) {
         productDao.save(Product);
     }
 

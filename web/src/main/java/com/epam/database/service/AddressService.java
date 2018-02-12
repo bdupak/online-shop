@@ -20,7 +20,7 @@ public class AddressService {
     }
 
     @Transactional
-    public void saveAddress(Address Address) {
+    public void save(Address Address) {
         addressDao.save(Address);
     }
 

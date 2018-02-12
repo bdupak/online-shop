@@ -15,12 +15,12 @@ public class OrderService {
     private OrderDao orderDao;
 
     @Transactional
-    public Order getOrderById(Long id) {
+    public Order getById(Long id) {
         return orderDao.getById(id);
     }
 
     @Transactional
-    public void saveOrder(Order Order) {
+    public void save(Order Order) {
         orderDao.save(Order);
     }
 

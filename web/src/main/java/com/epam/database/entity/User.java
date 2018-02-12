@@ -36,5 +36,4 @@ public class User {
     private String language;
     @Column(name = "is_deleted")
     private Boolean isDeleted;
-
 }

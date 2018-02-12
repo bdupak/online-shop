@@ -5,12 +5,18 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public abstract class AbstractDao<T> implements GenericDao<T> {
+
     private Class<T> clazz;
+    @Autowired
     protected SessionFactory sessionFactory;
+    @Autowired
     protected Transaction transaction;
 
     public AbstractDao(Class<T> clazz) {

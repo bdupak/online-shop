@@ -15,12 +15,12 @@ public class CategoryService {
     private CategoryDao categoryDao;
 
     @Transactional
-    public Category getCategoryById(Long id) {
+    public Category getById(Long id) {
         return categoryDao.getById(id);
     }
 
     @Transactional
-    public void saveCategory(Category Category) {
+    public void save(Category Category) {
         categoryDao.save(Category);
     }
 
