@@ -22,6 +22,6 @@
 hs_err_pid*
 
 /target/
-database/target/
+
 .idea
 *.iml
