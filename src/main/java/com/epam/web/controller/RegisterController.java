@@ -13,20 +13,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.validation.Valid;
 
 @Controller
-public class UserController {
+public class RegisterController {
 
     @Autowired
     private UserService userService;
 
-    @GetMapping("/")
-    private String homePage(Model model) {
-        return "index";
-    }
-
-    @GetMapping("/editUsers")
-    public String userForm(Model model) {
-        model.addAttribute("users", userService.getAll());
-        return "editUsers";
+    @GetMapping("/register")
+    public String registerUser() {
+        return "registerUser";
     }
 
     @ModelAttribute("user")
@@ -34,13 +28,9 @@ public class UserController {
         return new User();
     }
 
-    @PostMapping("/addUser")
+    @PostMapping("/registerUser")
     public String saveUser(@ModelAttribute("user") @Valid User user, BindingResult result, Model model) {
-        if (result.hasErrors()) {
-            model.addAttribute("users", userService.getAll());
-            return "editUsers";
-        }
         userService.save(user);
-        return "redirect:/";
+        return "index";
     }
 }

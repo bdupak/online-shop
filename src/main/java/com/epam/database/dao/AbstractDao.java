@@ -1,5 +1,6 @@
 package com.epam.database.dao;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -14,23 +15,27 @@ public abstract class AbstractDao<T> {
     protected Class<T> clazz;
 
     public T getById(Long id) {
-        return sessionFactory.getCurrentSession().get(clazz, id);
+        return getSession().get(clazz, id);
     }
 
     public void save(T entity) {
-        sessionFactory.getCurrentSession().save(entity);
+        getSession().save(entity);
     }
 
     public void update(T entity) {
-        sessionFactory.getCurrentSession().update(entity);
+        getSession().update(entity);
     }
 
     public void delete(T entity) {
-        sessionFactory.getCurrentSession().delete(entity);
+        getSession().delete(entity);
     }
 
     public List<T> getAll() {
-        TypedQuery<T> query = sessionFactory.getCurrentSession().createQuery("from " + clazz.getSimpleName());
+        TypedQuery<T> query = getSession().createQuery("from " + clazz.getSimpleName());
         return query.getResultList();
+    }
+
+    private Session getSession() {
+        return sessionFactory.getCurrentSession();
     }
 }
