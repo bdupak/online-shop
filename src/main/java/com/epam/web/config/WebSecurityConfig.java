@@ -13,7 +13,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-//    @Qualifier("userDetailsService")
     private UserDetailsService userDetailsService;
 
     @Bean
@@ -26,11 +25,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     public void configure(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.authorizeRequests().anyRequest().hasAnyRole("admin", "user")
-                .and().authorizeRequests().antMatchers("/login**").permitAll()
-                .and().formLogin().loginPage("/loginUser").loginProcessingUrl("/login").permitAll()
-                .and().logout().logoutSuccessUrl("/logout").permitAll()
-                .and().csrf().disable();
+//        httpSecurity.authorizeRequests().anyRequest().hasAnyRole("admin", "user")
+//                .and().authorizeRequests().antMatchers("/login**").permitAll()
+//                .and().formLogin().loginPage("/loginUser").loginProcessingUrl("/login").permitAll()
+//                .and().logout().logoutSuccessUrl("/logout").permitAll()
+//                .and().csrf().disable();
 //
 //        httpSecurity.authorizeRequests().antMatchers("/user**").hasRole("user")
 //                .and().authorizeRequests().antMatchers("/admin**").hasRole("admin")
