@@ -35,7 +35,7 @@ public abstract class AbstractDao<T> {
         return query.getResultList();
     }
 
-    private Session getSession() {
+    protected Session getSession() {
         return sessionFactory.getCurrentSession();
     }
 }
