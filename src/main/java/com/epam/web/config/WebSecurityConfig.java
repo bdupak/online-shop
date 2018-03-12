@@ -20,14 +20,77 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
+    @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+        auth.userDetailsService(userDetailsService);//.passwordEncoder(passwordEncoder());
     }
 
-    public void configure(HttpSecurity httpSecurity) throws Exception {
+    @Override
+    protected void configure(HttpSecurity httpSecurity) throws Exception {
+
+        /*
+        Basic method
+        */
+
+//        httpSecurity.authorizeRequests().anyRequest().authenticated()
+//                .and().formLogin().loginPage("/login").loginProcessingUrl("/login").permitAll();
+
+
+        /*
+        With messages
+        */
+
+//        httpSecurity.authorizeRequests().anyRequest().authenticated()
+//                .and().formLogin().loginPage("/login").loginProcessingUrl("/login")
+//                .usernameParameter("username")
+//                .passwordParameter("password")
+//                .successHandler((req, res, auth) -> {
+//                    for (GrantedAuthority authority : auth.getAuthorities()) {
+//                        System.out.println("Authority = " + authority.getAuthority());
+//                    }
+//                })
+//                .failureHandler((req, res, exp) -> {
+//                    if (exp.getClass().isAssignableFrom(BadCredentialsException.class)) {
+//                        System.out.println("Invalid User Name or password");
+//                    } else {
+//                        System.out.println(exp.getMessage());
+//                    }
+//                    res.sendRedirect("/login");
+//                })
+//                .permitAll();
+
+        /*
+        with filter
+        */
+
+        httpSecurity.authorizeRequests()
+                .antMatchers("/admin/**").access("hasRole('admin')")
+                .and()
+                .formLogin().loginPage("/login")
+                .usernameParameter("username").passwordParameter("password")
+                .and()
+                .logout().logoutSuccessUrl("/logout")
+                .and()
+                .exceptionHandling().accessDeniedPage("/403")
+                .and()
+                .csrf().disable();
+
+        httpSecurity.authorizeRequests()
+                .antMatchers("/user/**").access("hasRole('user')")
+                .and()
+                .formLogin().loginPage("/login")
+                .usernameParameter("username").passwordParameter("password")
+                .and()
+                .logout().logoutSuccessUrl("/logout")
+                .and()
+                .exceptionHandling().accessDeniedPage("/403")
+                .and()
+                .csrf().disable();
+
+
 //        httpSecurity.authorizeRequests().anyRequest().hasAnyRole("admin", "user")
 //                .and().authorizeRequests().antMatchers("/login**").permitAll()
-//                .and().formLogin().loginPage("/loginUser").loginProcessingUrl("/login").permitAll()
+//                .and().formLogin().loginPage("/login").loginProcessingUrl("/login").permitAll()
 //                .and().logout().logoutSuccessUrl("/logout").permitAll()
 //                .and().csrf().disable();
 //

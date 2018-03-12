@@ -29,13 +29,13 @@
 				<tr>
 					<td>Login</td>
 					<td>
-						<form:input path="login" /> <br />
+						<form:input type="text" path="login" name="username" /> <br />
 					</td>
 				</tr>
 				<tr>
 					<td>Password</td>
 					<td>
-						<form:input path="password" /> <br />
+						<form:input type="password" path="password" name="password" /> <br />
 					</td>
 				</tr>
 				<tr>
