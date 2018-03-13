@@ -13,6 +13,9 @@
     <form action="editUsers">
         <button type="submit">Show user</button>
     </form>
+    <form action="showProducts">
+        <button type="submit">Show products</button>
+    </form>
 </div>
 </body>
 </html>
