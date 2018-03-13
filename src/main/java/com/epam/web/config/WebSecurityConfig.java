@@ -9,7 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-@EnableWebSecurity
+@EnableWebSecurity(debug = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -45,11 +45,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .usernameParameter("username")
 //                .passwordParameter("password")
 //                .successHandler((req, res, auth) -> {
+//                    System.out.println("Success !");
 //                    for (GrantedAuthority authority : auth.getAuthorities()) {
 //                        System.out.println("Authority = " + authority.getAuthority());
+//                        throw new RuntimeException(authority.getAuthority());
 //                    }
 //                })
 //                .failureHandler((req, res, exp) -> {
+//                    System.out.println("No success");
 //                    if (exp.getClass().isAssignableFrom(BadCredentialsException.class)) {
 //                        System.out.println("Invalid User Name or password");
 //                    } else {
