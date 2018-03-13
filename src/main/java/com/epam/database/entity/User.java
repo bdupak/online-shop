@@ -3,6 +3,7 @@ package com.epam.database.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 
 @Entity
@@ -12,8 +13,11 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotNull
     private String login;
+    @NotNull
     private String password;
+    @NotNull
     private String salt;
     private String name;
     private String surname;
