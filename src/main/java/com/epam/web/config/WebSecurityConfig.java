@@ -2,13 +2,16 @@ package com.epam.web.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+@Configuration
 @EnableWebSecurity(debug = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -22,11 +25,31 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService);//.passwordEncoder(passwordEncoder());
+//        auth.userDetailsService(userDetailsService);//.passwordEncoder(passwordEncoder());
+        auth.inMemoryAuthentication()
+                .withUser("user").password("pass").roles("USER")
+                .and()
+                .withUser("admin").password("pass").roles("ADMIN");
     }
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
+
+//        todo need to look for some workaround
+
+        httpSecurity.authorizeRequests().antMatchers("/").permitAll()
+                .and()
+                .authorizeRequests().antMatchers("/user**").hasRole("USER")
+                .and()
+                .authorizeRequests().antMatchers("/admin**").hasRole("ADMIN")
+                .and()
+                .formLogin().loginPage("/login").loginProcessingUrl("/loginUser")
+                .usernameParameter("username")
+                .passwordParameter("password")
+                .permitAll()
+                .and()
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
+
 
         /*
         Basic method
@@ -66,29 +89,29 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         with filter
         */
 
-        httpSecurity.authorizeRequests()
-                .antMatchers("/admin/**").access("hasRole('admin')")
-                .and()
-                .formLogin().loginPage("/login")
-                .usernameParameter("username").passwordParameter("password")
-                .and()
-                .logout().logoutSuccessUrl("/logout")
-                .and()
-                .exceptionHandling().accessDeniedPage("/403")
-                .and()
-                .csrf().disable();
-
-        httpSecurity.authorizeRequests()
-                .antMatchers("/user/**").access("hasRole('user')")
-                .and()
-                .formLogin().loginPage("/login")
-                .usernameParameter("username").passwordParameter("password")
-                .and()
-                .logout().logoutSuccessUrl("/logout")
-                .and()
-                .exceptionHandling().accessDeniedPage("/403")
-                .and()
-                .csrf().disable();
+//        httpSecurity.authorizeRequests()
+//                .antMatchers("/admin/**").access("hasRole('admin')")
+//                .and()
+//                .formLogin().loginPage("/login")
+//                .usernameParameter("username").passwordParameter("password")
+//                .and()
+//                .logout().logoutSuccessUrl("/logout")
+//                .and()
+//                .exceptionHandling().accessDeniedPage("/403")
+//                .and()
+//                .csrf().disable();
+//
+//        httpSecurity.authorizeRequests()
+//                .antMatchers("/user/**").access("hasRole('user')")
+//                .and()
+//                .formLogin().loginPage("/login")
+//                .usernameParameter("username").passwordParameter("password")
+//                .and()
+//                .logout().logoutSuccessUrl("/logout")
+//                .and()
+//                .exceptionHandling().accessDeniedPage("/403")
+//                .and()
+//                .csrf().disable();
 
 
 //        httpSecurity.authorizeRequests().anyRequest().hasAnyRole("admin", "user")
