@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -25,7 +27,7 @@ public class UserController {
 
     @GetMapping("/editUsers")
     public String userForm(Model model) {
-        model.addAttribute("users", userService.getAll());
+        model.addAttribute("users", clearPasswordAndSalt(userService.getAll()));
         return "editUsers";
     }
 
@@ -42,5 +44,15 @@ public class UserController {
         }
         userService.save(user);
         return "redirect:/";
+    }
+
+    private List<User> clearPasswordAndSalt(List<User> users) {
+        List<User> userList = new ArrayList<>();
+        for (User user : users) {
+            user.setPassword(null);
+            user.setSalt(null);
+            userList.add(user);
+        }
+        return userList;
     }
 }
