@@ -11,6 +11,7 @@ public class SaltUtil {
     public static String generateSalt() {
         StringBuilder builder = new StringBuilder();
         SecureRandom random = new SecureRandom();
+        LOG.info("Generate random salt");
         boolean isUpperCase;
         char letter;
         for (int i = 0; i < 255; i++) {
