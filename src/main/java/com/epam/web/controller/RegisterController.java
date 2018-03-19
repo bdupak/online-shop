@@ -23,7 +23,7 @@ public class RegisterController {
     @Autowired
     BCryptPasswordEncoder encoder;
 
-    @GetMapping("/register")
+    @GetMapping("/registration")
     public String registerUser() {
         return "registerUser";
     }
