@@ -1,7 +1,7 @@
                       <div class="aside-nav minimize-on-small">
                          <p class="aside-nav-text">Sidebar navigation</p>
                          <ul>
-                            <li><a>Home</a></li>
+                            <li><a href="/">Home</a></li>
                             <li>
                                <a>Product</a>
                                <ul>

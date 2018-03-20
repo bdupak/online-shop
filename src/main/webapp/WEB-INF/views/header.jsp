@@ -2,7 +2,9 @@
          <div class="line">
             <div class="box">
                <div class="s-6 l-2">
-                  <img src="/resources/img/logo.png">
+                  <a href="/">
+                    <img src="/resources/img/logo.png">
+                  </a>
                </div>
                <div class="s-12 l-8 right">
                   <div class="margin">
@@ -23,7 +25,7 @@
                <p class="nav-text">Main navigation</p>
                <div class="top-nav s-12 l-10">
                   <ul>
-                     <li><a>Home</a></li>
+                     <li><a href="/">Home</a></li>
                      <li>
                         <a>Product</a>
                         <ul>
