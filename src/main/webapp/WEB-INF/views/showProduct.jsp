@@ -23,8 +23,8 @@
 		</style>
 	</head>
 	<body>
-		<h1>Add new product</h1>
-		<form:form action="addProduct" method="post" modelAttribute="product">
+<%--		<h1>Add new product</h1>
+		<form:form action="createProduct" method="post" modelAttribute="product">
 			<table>
 				<tr>
 					<td>Name</td>
@@ -74,7 +74,7 @@
 				</tr>
 			</table>
 		</form:form>
-
+--%>
 		<h2>Product List</h2>
 		<table>
 			<tr>

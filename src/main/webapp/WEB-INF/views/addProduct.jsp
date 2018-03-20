@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>online-shop</title>
         <link rel="stylesheet" href="<c:url value="/resources/css/components.css"/>">
@@ -19,37 +19,49 @@
             <header>
                 <jsp:include page="header.jsp"></jsp:include>
             </header>
-
-            <form action="editUsers">
-                <button type="submit">Show user</button>
-            </form>
-            <form action="showProducts">
-                <button type="submit">Show products</button>
-            </form>
-
             <div class="line">
                 <div class="box">
                         <div class="margin2x">
                            <!-- CONTENT -->
                            <section class="s-12 m-8 l-9 right">
-                                <form action="registerUser" method="post" class="customform s-12 l-8" modelAttribute="user">
+                                <form action="createProduct" method="post" class="customform s-12 l-8" modelAttribute="product">
                                     <div>
-                                        Login:
-                                        <input type="text" name="login" placeholder="Login" path="login" name="username">
+                                        Name:
+                                        <input type="text" placeholder="name" path="name" name="name">
                                     </div>
                                     <div>
-                                        Password:
-                                        <input class="input" type="password" name="password" placeholder="Password" path="password" name="password">
+                                        Overview:
+                                        <input type="text" placeholder="overview" path="overview" name="overview">
+                                    </div>
+                                    <div>
+                                        Weight / in grams:
+                                        <input type="text" placeholder="weight" path="weight" name="weight">
+                                    </div>
+                                    <div>
+                                        Size:
+                                        <input type="text" placeholder="size" path="size" name="size">
+                                    </div>
+                                    <div>
+                                        Image url:
+                                        <input type="text" placeholder="Image url" path="imageUrl" name="Image url">
+                                    </div>
+                                    <div>
+                                        Category:
+                                        <input type="text" placeholder="category" path="category.category" name="category.category">
+                                    </div>
+                                    <div>
+                                        Price:
+                                        <input type="text" placeholder="price" path="price" name="price">
                                     </div>
                                     <div class="margin">
                                         <div class="s-12 m-6 l-6">
-                                            <button class="button" type="submit">Register</button>
+                                            <button class="button" type="submit">Create</button>
                                         </div>
                                         <div class="s-12 m-6 l-6">
                                             <button class="button" type="reset">Cancel</button>
                                         </div>
                                     </div>
-                                <form:form>
+                                <form>
                            </section>
 
                            <!-- ASIDE NAV -->
@@ -65,62 +77,3 @@
         </div>
     </body>
 </html>
-
-
-
-
-
-
-<%--
-
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
-<html>
-		<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Spring5 MVC Hibernate Demo</title>
-		<style type="text/css">
-			.error {
-				color: red;
-			}
-			table {
-				width: 50%;
-				border-collapse: collapse;
-				border-spacing: 0px;
-			}
-			table td {
-				border: 1px solid #565454;
-				padding: 20px;
-			}
-		</style>
-	</head>
-	<body>
-		<h1>Input Form</h1>
-		<form:form action="${pageContext.request.contextPath}/registerUser" method="post" modelAttribute="user">
-			<table>
-				<tr>
-					<td>Login</td>
-					<td>
-						<form:input path="login" /> <br />
-					</td>
-				</tr>
-				<tr>
-					<td>Password</td>
-					<td>
-						<form:input path="password" /> <br />
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2"><button type="submit">Submit</button></td>
-				</tr>
-			</table>
-		</form:form>
-
-
-	</body>
-</html>
-
---%>

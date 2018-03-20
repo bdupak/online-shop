@@ -29,14 +29,19 @@ public class ProductController {
         return new Product();
     }
 
-    @PostMapping("/addProduct")
+    @GetMapping("/addProduct")
+    public String product(Model model) {
+        return "addProduct";
+    }
+
+    @PostMapping("/createProduct")
     public String addProduct(@ModelAttribute("product") @Valid Product product, BindingResult result, Model model) {
         System.out.println(product.toString());
         System.out.println(result.hasErrors());
         System.out.println(result.getAllErrors());
         if (result.hasErrors()) {
             model.addAttribute("products", productService.getAll());
-            return "showProduct";
+            return "addProduct";
         }
         System.out.println(product.toString());
         productService.save(product);

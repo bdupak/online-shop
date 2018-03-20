@@ -25,14 +25,14 @@
                         <div class="margin2x">
                            <!-- CONTENT -->
                            <section class="s-12 m-8 l-9 right">
-                                <form action="${pageContext.request.contextPath}/loginUser" method="post" class="customform s-12 l-8">
+                                <form action="loginUser" method="post" class="customform s-12 l-8">
                                     <div>
                                         Login:
-                                        <input type="text" name="login" placeholder="Login" path="login" name="username">
+                                        <input type="text" placeholder="Login" path="login" name="username">
                                     </div>
                                     <div>
                                         Password:
-                                        <input type="password" name="password" placeholder="Password" path="password" name="password">
+                                        <input type="password" placeholder="Password" path="password" name="password">
                                     </div>
                                     <div class="margin">
                                         <div class="s-12 m-6 l-6">

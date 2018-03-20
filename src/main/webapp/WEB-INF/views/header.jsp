@@ -56,6 +56,9 @@
                   <a href="registration">
                         <i title="Registration" class="icon-new_user icon2x right padding"></i>
                   </a>
+                  <a href="addProduct">
+                        <i title="Add product" class="icon-plus icon2x right padding"></i>
+                  </a>
                </div>
             </nav>
          </div>
