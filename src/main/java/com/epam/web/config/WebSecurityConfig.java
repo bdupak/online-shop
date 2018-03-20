@@ -48,7 +48,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordParameter("password")
                 .permitAll()
                 .and()
-                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .and().csrf().disable();
 
 
         /*
