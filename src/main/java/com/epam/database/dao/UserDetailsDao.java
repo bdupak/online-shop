@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 public class UserDetailsDao extends AbstractDao {
 
     public User getUserByUsername(String username) {
-        return getSession().get(User.class, username);
+        return (User) getSession().createQuery("from User where login like '" + username + "'").list().get(0);
     }
 }

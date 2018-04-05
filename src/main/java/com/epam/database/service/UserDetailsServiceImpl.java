@@ -25,7 +25,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         UserBuilder builder;
         if (user != null) {
             builder = withUsername(username);
-            builder.disabled(user.getIsDeleted());
+            builder.disabled(user.getIsDeleted() != null);
             builder.password(user.getPassword() + user.getSalt());
             String authorities = user.getRole().getRole();
             builder.authorities(authorities);
