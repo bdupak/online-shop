@@ -20,8 +20,8 @@ public class RegisterController {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    BCryptPasswordEncoder encoder;
+//    @Autowired
+//    BCryptPasswordEncoder encoder;
 
     @GetMapping("/registration")
     public String registerUser() {
@@ -35,8 +35,8 @@ public class RegisterController {
 
     @PostMapping("/registerUser")
     public String saveUser(@ModelAttribute("user") User user, BindingResult result, Model model) {
-        user.setSalt(SaltUtil.generateSalt());
-        user.setPassword(encoder.encode(user.getPassword() + user.getSalt()));
+//        user.setSalt(SaltUtil.generateSalt());
+//        user.setPassword(encoder.encode(user.getPassword() + user.getSalt()));
         userService.save(user);
         return "index";
     }

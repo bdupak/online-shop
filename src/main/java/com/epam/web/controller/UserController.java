@@ -46,6 +46,11 @@ public class UserController {
         return "redirect:/";
     }
 
+    @GetMapping("/test")
+    public String test() {
+        return "test";
+    }
+
     private List<User> clearPasswordAndSalt(List<User> users) {
         List<User> userList = new ArrayList<>();
         for (User user : users) {

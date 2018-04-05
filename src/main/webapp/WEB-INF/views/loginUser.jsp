@@ -25,7 +25,7 @@
                         <div class="margin2x">
                            <!-- CONTENT -->
                            <section class="s-12 m-8 l-9 right">
-                                <form action="loginUser" method="post" class="customform s-12 l-8">
+                                <form action="/login" method="post" class="customform s-12 l-8">
                                     <div>
                                         Login:
                                         <input type="text" placeholder="Login" path="login" name="username">

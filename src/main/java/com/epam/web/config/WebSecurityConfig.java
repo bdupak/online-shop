@@ -7,6 +7,8 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
@@ -18,18 +20,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService userDetailsService;
 
-    @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+//    @Bean
+//    public BCryptPasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
 //        auth.userDetailsService(userDetailsService);//.passwordEncoder(passwordEncoder());
-        auth.inMemoryAuthentication()
-                .withUser("user").password("pass").roles("USER")
-                .and()
-                .withUser("admin").password("pass").roles("ADMIN");
+       // UserDetails userDetails =
+        //                .withUser("admin").password("pass").roles("ADMIN");
+        auth.inMemoryAuthentication().withUser(User.withDefaultPasswordEncoder().username("user").password("pass").roles("USER").build())
+                .withUser(User.withDefaultPasswordEncoder().username("user2").password("pass2").roles("ADMIN").build());
+//        auth.inMemoryAuthentication(userDetails);
+//                .withUser("user").password("pass").roles("USER")
+//                .and()
+//                .withUser("admin").password("pass").roles("ADMIN");
     }
 
     @Override
@@ -41,9 +47,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests().antMatchers("/user**").hasRole("USER")
                 .and()
+                .authorizeRequests().antMatchers("/test**").hasRole("USER")
+                .and()
                 .authorizeRequests().antMatchers("/admin**").hasRole("ADMIN")
                 .and()
-                .formLogin().loginPage("/login").loginProcessingUrl("/loginUser")
+                .formLogin().loginPage("/login")//.loginProcessingUrl("/loginUser")
                 .usernameParameter("username")
                 .passwordParameter("password")
                 .permitAll()
